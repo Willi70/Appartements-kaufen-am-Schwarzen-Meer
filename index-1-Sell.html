@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beach Appartements Sozopol – Apartement-Verkauf</title>
+  <meta name="description" content="Verkauf von 6 frisch renovierten Appartements im Resort Beach Appartements Sozopol am Schwarzen Meer. Alle Infos, Grunddaten und Preise – jetzt anfragen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <img src="Bilder/Dronen-Photo-Sozopol.jpg">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#637395; --fg:#0e2236; --muted:#6b7a8c; --brand:#1b6cff; --brand-2:#00b7ff; --paper:#ffffff; --paper-2:#f6f8fb;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#0b1020;background:var(--paper-2)}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:min(1100px, 92vw);margin-inline:auto}
+    header.hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,var(--bg),#0f3c6e 55%, #165f9b)}
+    .hero::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:130%;background:radial-gradient(70% 60% at 30% 20%,rgba(255,255,255,.18),transparent 60%),radial-gradient(80% 70% at 80% -10%,rgba(0,183,255,.18),transparent 60%)}
+    .hero .inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:72px 0;color:white}
+    @media (max-width:900px){.hero .inner{grid-template-columns:1fr;padding:56px 0}}
+    .badge{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.25);color:white;border-radius:999px;padding:6px 12px;font-size:13px;backdrop-filter:saturate(150%) blur(6px)}
+    h1{margin:12px 0 16px;font-size:clamp(28px, 4vw, 42px);line-height:1.05;color:white}
+    .lead{font-size:clamp(16px, 2vw, 18px);color:rgba(255,255,255,.92);max-width:60ch}
+    .cta-row{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;border-radius:12px;padding:12px 16px;font-weight:600;border:1px solid transparent;cursor:pointer}
+    .btn-primary{background:white;color:#0a2450}
+    .btn-outline{background:transparent;color:white;border-color:rgba(255,255,255,.4)}
+    .hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:16px 18px;}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #e9eef5}
+    .nav .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+    .nav a{padding:8px 10px;border-radius:8px;color:#0b1020}
+    .nav a:hover{background:#eef3fb}
+
+    section{padding:48px 0}
+    h2{font-size:clamp(22px,3vw,30px);margin:0 0 18px;color:#0a2450}
+    .grid{display:grid;grid-template-columns:repeat(12, 1fr);gap:18px}
+    .card{grid-column:span 12;background:white;border:1px solid #e7ecf3;border-radius:16px;padding:18px}
+    .muted{color:#5a6b7b}
+    .pill{display:inline-block;background:#eef3fb;color:#0b2d66;padding:6px 10px;border-radius:999px;font-size:12px}
+
+    .apt-card{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .apt-card h3{margin:0 0 4px;font-size:20px}
+    .apt-card .meta{font-size:14px;color:#4c6071}
+    .apt-card ul{margin:8px 0 0 18px}
+    .price{font-weight:800;font-size:20px;margin-top:10px}
+    .actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    @media (max-width:800px){.apt-card{grid-template-columns:1fr}}
+
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{padding:10px 12px;border-bottom:1px solid #eef1f6;text-align:left}
+    .table th{font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:#597089}
+
+    footer{background:#0d1e36;color:white;padding:40px 0}
+    footer .cols{display:grid;grid-template-columns:2fr 1fr;gap:22px}
+    @media (max-width:800px){footer .cols{grid-template-columns:1fr}}
+    .small{font-size:13px;color:#7ea2c7}
+
+    /* Simple hash-router for "Extra-Seiten" (Bilder) */
+    .gallery{display:none}
+    .gallery.active{display:block}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+    .gallery-grid .ph{aspect-ratio:4/3;background:#eaf1fb;border:1px dashed #b9c8dc;border-radius:12px;display:grid;place-items:center;color:#466e9f}
+    .gallery-grid img{width:100%;height:auto;border-radius:12px;display:block}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container row">
+      <div style="display:flex;align-items:center;gap:10px;font-weight:700;color:#0a2450">Beach Appartements Sozopol</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <a href="#intro">Start</a>
+        <a href="#apartments">Appartements</a>
+        <a href="#garagen">Garagen</a>
+        <a href="#bilder">Bilder</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="intro">
+    <div class="container inner">
+      <div>
+        <span class="badge">Ein herzliches Grüß Gott am Schwarzen Meer</span>
+        <h1>Verkauf von Appartements – Beach Appartements Sozopol</h1>
+        <p class="lead">Liebe Gäste, Freunde und Interessenten: Unser wundervolles Kleinod direkt am Schwarzen Meer in Sozopol steht für Sie bereit – für die schönste Zeit des Jahres, Ihre Urlaubszeit. Nach fast 2 Jahren Renovierung, Möblierung und Farbgestaltung sind aktuell noch <strong>6 Appartements</strong> verfügbar. Resort-Highlights: 
+            * Zugang zum Pool (teilw. direkt mit Schiebetüren)</li>
+            * Balkone/Terrassen je nach Einheit</li>
+            * Voll ausgestattete Küchen & moderne Bäder</li>
+            * Optionale Garagen separat erhältlich</li>
+
+            - Verkauf erfolgt provisionsfrei!
+
+            <div class="muted" style="font-size:14px">Nutzung zur Eigennutzung oder zur Vermietung (unter Beachtung der gesetzlichen Voraussetzungen). Erste Informationen finden Sie unten. Für weitere Auskünfte: Bitte fragen Sie uns gern.</div>
+          </ul>
+        </div>
+      </di</p>
+
+      
+    </div>
+  </header>
+
+  <main>
+    <section id="apartments">
+      <div class="container">
+        <h2>Verfügbare Appartements</h2>
+        <p class="muted">Die folgenden Einheiten stehen zum Verkauf. Angaben zu Ebenen, Flächen, gemeinschaftlichen Gebäudeanteilen, idealen Grundstücksanteilen und Preisen finden Sie jeweils in den Karten.</p>
+
+        <div class="grid">
+          <!-- Gebäude 2 / 2.1 -->
+          <article class="card apt-card">
+            <div>
+              <div class="pill">Gebäude 2</div>
+              <h3>Appartement 2.1</h3>
+              <div class="meta">Ebene: Erdgeschoss · Zugang zum Pool mit Schiebetüren</div>
+              <ul>
+                <li>Küche mit Essbereich</li>
+                <li>Wohnzimmer und Schlafzimmer</li>
+                <li>Badezimmer & Flur</li>
+              </ul>
+              <div class="price">147.125,00 €</div>
+              <div class="actions">
+                <a class="btn" href="#bilder-2-1">Bilder ansehen</a>
+                <a class="btn" href="#kontakt">Anfrage senden</a>
+              </div>
+            </div>
+            <div>
+              <table class="table">
+                <tr><th>Wohnungsfläche</th><td>53,5 m²</td></tr>
+                <tr><th>Gemeinschaftliche Gebäudeteile</th><td>17,76 m²</td></tr>
+                <tr><th>Ideale Teile des Grundstücks</th><td>7,4 %</td></tr>
+              </table>
+            </div>
+          </article>
+
+          <!-- Gebäude 2 / 2.2 -->
+          <article class="card apt-card">
+            <div>
+              <div class="pill">Gebäude 2</div>
+              <h3>Appartement 2.2</h3>
+              <div class="meta">Ebene: 1. Stock · zwei Balkone</div>
+              <ul>
+                <li>Küche mit Essbereich</li>
+                <li>Wohnzimmer & Schlafzimmer</li>
+                <li>Badezimmer & Flur</li>
+                <li>Zwei Balkone</li>
+              </ul>
+              <div class="price">171.215,00 €</div>
+              <div class="actions">
+                <a class="btn" href="#bilder-2-2">Bilder ansehen</a>
+                <a class="btn" href="#kontakt">Anfrage senden</a>
+              </div>
+            </div>
+            <div>
+              <table class="table">
+                <tr><th>Wohnfläche</th><td>62,26 m²</td></tr>
+                <tr><th>Gemeinschaftliche Gebäudeteile</th><td>22,6 m²</td></tr>
+                <tr><th>Ideale Teile des Grundstücks</th><td>9,45 %</td></tr>
+              </table>
+            </div>
+          </article>
+
+          <!-- Gebäude 3 / 3.1 -->
+          <article class="card apt-card">
+            <div>
+              <div class="pill">Gebäude 3</div>
+              <h3>Apartment 3.1</h3>
+              <div class="meta">Ebene: Erdgeschoss · direkter Zugang zum Pool mit Schiebetüren</div>
+              <ul>
+                <li>Küche mit Essbereich</li>
+                <li>Wohnzimmer & Schlafzimmer</li>
+                <li>Komplettes Bad & Flur</li>
+              </ul>
+              <div class="price">162.250,00 €</div>
+              <div class="actions">
+                <a class="btn" href="#bilder-3-1">Bilder ansehen</a>
+                <a class="btn" href="#kontakt">Anfrage senden</a>
+              </div>
+            </div>
+            <div>
+              <table class="table">
+                <tr><th>Wohnungsfläche</th><td>59 m²</td></tr>
+                <tr><th>Gemeinschaftliche Gebäudeanteile</th><td>19,54 m²</td></tr>
+                <tr><th>Ideale Teile des Grundstücks</th><td>7,93 %</td></tr>
+              </table>
+            </div>
+          </article>
+
+          <!-- Gebäude 3 / 3.3 -->
+          <article class="card apt-card">
+            <div>
+              <div class="pill">Gebäude 3</div>
+              <h3>Apartment 3.3</h3>
+              <div class="meta">Ebene: Obergeschoss · mit Balkon</div>
+              <ul>
+                <li>Separate Küche</li>
+                <li>Wohnzimmer mit Essbereich</li>
+                <li>Komplettes Bad & kleiner Flur</li>
+                <li>Balkon</li>
+              </ul>
+              <div class="price">141.735,00 €</div>
+              <div class="actions">
+                <a class="btn" href="#bilder-3-3">Bilder ansehen</a>
+                <a class="btn" href="#kontakt">Anfrage senden</a>
+              </div>
+            </div>
+            <div>
+              <table class="table">
+                <tr><th>Wohnungsfläche</th><td>ca. 41,51 m²</td></tr>
+                <tr><th>Gemeinschaftliche Gebäudeanteile</th><td>18,74 m²</td></tr>
+                <tr><th>Ideale Teile des Grundstücks</th><td>7,74 %</td></tr>
+              </table>
+            </div>
+          </article>
+
+          <!-- Gebäude 4 / 4.1 -->
+          <article class="card apt-card">
+            <div>
+              <div class="pill">Gebäude 4</div>
+              <h3>Apartment 4.1</h3>
+              <div class="meta">Ebene: Erdgeschoss · Terrasse & Poolzugang über Schiebetüren</div>
+              <ul>
+                <li>Wohnzimmer mit Essbereich</li>
+                <li>Schlafzimmer</li>
+                <li>Vollständige Küche</li>
+                <li>Komplettes Badezimmer</li>
+              </ul>
+              <div class="price">134.007,50 €</div>
+              <div class="actions">
+                <a class="btn" href="#bilder-4-1">Bilder ansehen</a>
+                <a class="btn" href="#kontakt">Anfrage senden</a>
+              </div>
+            </div>
+            <div>
+              <table class="table">
+                <tr><th>Wohnungsfläche</th><td>48,73 m²</td></tr>
+                <tr><th>Gemeinschaftliche Gebäudeanteile</th><td>16,15 m²</td></tr>
+                <tr><th>Ideale Teile des Grundstücks</th><td>7,63 %</td></tr>
+              </table>
+            </div>
+          </article>
+
+          <!-- Gebäude 4 / 4.2 -->
+          <article class="card apt-card">
+            <div>
+              <div class="pill">Gebäude 4</div>
+              <h3>Apartment 4.2</h3>
+              <div class="meta">Ebene: 1. Stock · zwei Balkone</div>
+              <ul>
+                <li>Küche mit Essbereich</li>
+                <li>Wohnzimmer mit Essbereich</li>
+                <li>Badezimmer & Flur</li>
+                <li>2 Balkone</li>
+              </ul>
+              <div class="price">171.215,00 €</div>
+              <div class="actions">
+                <a class="btn" href="#bilder-4-2">Bilder ansehen</a>
+                <a class="btn" href="#kontakt">Anfrage senden</a>
+              </div>
+            </div>
+            <div>
+              <table class="table">
+                <tr><th>Wohnungsfläche</th><td>62,22 m²</td></tr>
+                <tr><th>Gemeinschaftliche Gebäudeanteile</th><td>26,52 m²</td></tr>
+                <tr><th>Ideale Teile des Grundstücks</th><td>8,49 %</td></tr>
+              </table>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="garagen" style="background:var(--paper)">
+      <div class="container">
+        <h2>Garagen (separat)</h2>
+        <div class="card">
+          <div style="overflow:auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Zu Appartement</th>
+                  <th>Garagen-Nr.</th>
+                  <th>Gemeinsame Gebäudeteile</th>
+                  <th>Preis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>2.1</td><td>69</td><td>29,00 m²</td><td><strong>14.500,00 €</strong></td></tr>
+                <tr><td>2.2</td><td>70</td><td>43,24 m²</td><td><strong>21.620,00 €</strong></td></tr>
+                <tr><td>3.1</td><td>73</td><td>29,01 m²</td><td><strong>14.505,00 €</strong></td></tr>
+                <tr><td>3.3</td><td>79</td><td>29,72 m²</td><td><strong>14.860,00 €</strong></td></tr>
+                <tr><td>4.1</td><td>75</td><td>38,63 m²</td><td><strong>19.315,00 €</strong></td></tr>
+                <tr><td>4.2</td><td>76</td><td>26,36 m²</td><td><strong>13.180,00 €</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bilder">
+      <div class="container">
+        <h2>Bilder & Extra-Seiten</h2>
+        <p class="muted">Hier erscheinen die Bilder-Galerien der einzelnen Einheiten als eigene „Seiten“ (Hash-Links). Platzhalter sind gesetzt – die Fotos können später einfach ergänzt werden.</p>
+        <div class="card">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="#bilder-2-1">Bilder 2.1</a>
+            <a class="btn" href="#bilder-2-2">Bilder 2.2</a>
+            <a class="btn" href="#bilder-3-1">Bilder 3.1</a>
+            <a class="btn" href="#bilder-3-3">Bilder 3.3</a>
+            <a class="btn" href="#bilder-4-1">Bilder 4.1</a>
+            <a class="btn" href="#bilder-4-2">Bilder 4.2</a>
+          </div>
+        </div>
+
+        <!-- Galerie-Seiten (Hash-basiert) -->
+        <div id="bilder-2-1" class="gallery" aria-label="Galerie 2.1">
+          <h3>Galerie – Appartement 2.1</h3>
+          <div class="gallery-grid">
+            <img src="Bilder/2.1-Kueche.jpeg" alt="Appartement 2.1 Kueche">
+            <img src="Bilder/2.1-Blick-auf-pool.jpeg" alt="Appartement 2.1 Kueche">
+            <img src="Bilder/2.1-Bad-2.jpeg" alt="Appartement 2.1 Kueche">
+            <img src="Bilder/2.1-Blick-in.Schlafen-Wohnung.jpeg" alt="Appartement 2.1 Kueche">
+            <img src="Bilder/2.1-Schlafstube.jpeg" alt="Appartement 2.1 Kueche">
+            <img src="Bilder/2.1-Wohnstube.jpeg" alt="Appartement 2.1 Kueche">
+            <img src="Bilder_alt/2.1-Skizze.jpg" alt="Appartement 2.1 Skizze">
+
+          </div>
+        </div>
+        <div id="bilder-2-2" class="gallery" aria-label="Galerie 2.2">
+          <h3>Galerie – Appartement 2.2</h3>
+          <div class="gallery-grid">
+            <img src="Bilder/2.2-Schlafen-.jpeg" alt="Appartement 2.2 Schlafzimmerd">
+            <img src="Bilder/2.2-Schlafen-blick-Balkon.jpeg" alt="Appartement 2.2 Schlafzimmer">
+            <img src="Bilder/2.2-Schlafen.jpeg" alt="Appartement 2.2 Schlafzimmer">
+            <img src="Bilder/2.2-Wohntisch.jpeg" alt="Appartement 2.2 Wohnzimmer">
+            <img src="Bilder/2.2-Balkon.jpeg" alt="Appartement 2.2 Wohnzimmer">
+            <img src="Bilder_alt/2.2-Skizze.jpg" alt="Appartement 2.2 Skizze">
+          </div>
+        </div>
+        <div id="bilder-3-1" class="gallery" aria-label="Galerie 3.1">
+          <h3>Galerie – Apartment 3.1</h3>
+          <div class="gallery-grid">
+            <img src="Bilder/3.1-Wohnen.JPG" alt="Appartement 3.1 Wohnen">
+            <img src="Bilder/3.1-Wohnen-mit-DoppelbettCouch.JPG" alt="Appartement 3.1 Wohnen">
+            <img src="Bilder/3.1-Kueche.JPG" alt="Appartement 3.1 Küche">
+            <img src="Bilder/3.1-Schlafen-">
+            <img src="Bilder/3.1-Bad-0634.jpg">
+            <img src="Bilder_alt/ 3.1-Skizze.jpg" alt="Appartement 3.1 Skizze">
+          </div>
+        </div>
+        <div id="bilder-3-3" class="gallery" aria-label="Galerie 3.3">
+          <h3>Galerie – Apartment 3.3</h3>
+          <div class="gallery-grid">
+            <img src="Bilder/3.3-Couch Blick zum Balkon-Meer.png" alt="Appartement 3.3 Skizze">
+            <img src="Bilder/3.3-Bad.png" alt="Appartement 3.3 Skizze">
+            <img src="Bilder/3.3-Kueche.png">
+            <img src="Bilder/3.3-Kueche-2.png">
+            <img src="Bilder/3.3-Schlaf-Fenster.png" alt="Appartement 3.3 Skizze">
+            <img src="Bilder_alt/3.3-Skizze.jpg">
+          </div>
+        </div>
+        <div id="bilder-4-1" class="gallery" aria-label="Galerie 4.1">
+          <h3>Galerie – Apartment 4.1</h3>
+          <div class="gallery-grid">
+             <img src="Bilder/4.1-Wohnen.jpeg" alt="Appartement 4.1 Wohnen">
+            <img src="Bilder/4.1-Wohnstube-blick.auf-Terrasse-Meer.jpeg" alt="Appartement 4.1 Wohnen">
+            <img src="Bilder/4.1-Schlafen.png" alt="Appartement 4.1 Wohnen">
+            <img src="Bilder/4.1-Kuechennische.png" alt="Appartement 4.1 Wohnen">
+            <img src="Bilder_alt/ 4.1-Skizze.jpg" alt="Appartement 4.1 Skizze">
+          </div>
+        </div>
+        <div id="bilder-4-2" class="gallery" aria-label="Galerie 4.2">
+          <h3>Galerie – Apartment 4.2</h3>
+          <div class="gallery-grid">
+            <img src="Bilder/4.2-Bad.jpeg" alt="Appartement 4.2 Bad">
+            <img src="Bilder/4.2-Blick-auf-pool.jpeg" alt="Appartement 4.2 Wohnen">
+            <img src="Bilder/4.2-Blick-Kueche-Wohnen-Bad.jpeg" alt="Appartement 4.2 Wohnen">
+            <img src="Bilder/4.2-Kueche.png">
+            <img src="Bilder/4.2-Schlafen.png">
+            <img src="Bilder/4.2-Skizze.jpg" alt="Appartement 4.2 Bad">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" style="background:var(--paper)">
+      <div class="container">
+        <h2>Kontakt</h2>
+        <div class="grid">
+          <div class="card" style="grid-column:span 7">
+            <h3>Holidays and Health Ltd.</h3>
+            <p class="muted" style="margin:6px 0 14px">ul. Kalfata 38 · 8130 Sozopol · Bulgaria</p>
+            <p><strong>Telefon:</strong> <a href="tel:+359878782443">+359 878 782 443</a><br/>
+               <strong>E‑Mail:</strong> <a href="mailto:info@sh-holidays.com">info@sh-holidays.com</a></p>
+            <div class="actions">
+              <a class="btn btn-primary" href="mailto:info@sh-holidays.com?subject=Anfrage%20Appartements%20Sozopol">E‑Mail senden</a>
+              <a class="btn" href="tel:+359878782443">Anrufen</a>
+            </div>
+          </div>
+          <div class="card" style="grid-column:span 5">
+            <h3>Kurznachricht</h3>
+            <form onsubmit="event.preventDefault(); alert('Danke! Ihre Nachricht wurde vorbereitet. Bitte senden Sie uns eine E‑Mail an info@sh-holidays.com.');">
+              <label for="msg" class="muted" style="display:block;margin-bottom:6px">Ihre Anfrage</label>
+              <textarea id="msg" rows="5" style="width:100%;padding:10px;border:1px solid #dbe4ef;border-radius:12px"></textarea>
+              <div class="actions"><button class="btn btn-primary" type="submit">Absenden</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container cols">
+      <div>
+        <div style="font-weight:700">Beach Appartements Sozopol</div>
+        <div class="small">© <span id="y"></span> Holidays and Health Ltd. – Alle Angaben ohne Gewähr, Irrtümer vorbehalten.</div>
+      </div>
+      <div class="small" style="text-align:right">
+        <div><a href="#intro" style="color:white">Nach oben ↑</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Einfache Hash-Navigation für Galerie-"Seiten"
+    function updateGalleries(){
+      const hash = location.hash.replace('#','');
+      document.querySelectorAll('.gallery').forEach(el=>el.classList.remove('active'));
+      if(hash.startsWith('bilder-')){
+        const el = document.getElementById(hash);
+        if(el){ el.classList.add('active'); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+    }
+    window.addEventListener('hashchange', updateGalleries);
+    window.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementById('y').textContent = new Date().getFullYear();
+      updateGalleries();
+    });
+  </script>
+</body>
+</html>
